@@ -80,7 +80,7 @@ public class Personality {
             double percent = 0;
             for (int i = 0; i < B.length; i++) {
                 percent = (B[i] * 100) / (B[i] + A[i]);
-                percentage[i] = (int) Math.round(percent);
+                percentage[i] = (int) Math.ceil(percent);
             }
             return percentage;
         }
@@ -96,14 +96,15 @@ public class Personality {
 			System.out.println();
 		}
 		
-		/*
+		/**
 		* Calculates the percentage of the answers A and B from a file
 		* that classifies 4 different characters. The following question set has
 		* 10 groups of 7 questions with a repeating pattern.
         * B answers correspond to: Introvert(I), intuition(N), feeling(F), perceiving (P)
 		* A answers correspond to: Extravert(E), Sensation (S), Thinking (T), Judging (J)
 		*
-		*
+		* @param name of a student.
+		* @param percentOfB array of answers.
 		*/
         public static String personalityType(String name, int[] percentOfB) {
             String personality = "";
@@ -120,6 +121,12 @@ public class Personality {
         /**
         * Answers which character for each answer.
         *
+        * @param index which value of array to compute the value.
+        * @param B character letter for B characters.
+        * @param A letter for A choice.
+        * @param percentOfB the Array I am reffering.
+        * @param result the String I am referencing.
+        * @return Answers the question.
         */
         public static String answerOfAOrB (int index, String B, String A, 
                                             int[] percentOfB, String result) {
@@ -133,87 +140,4 @@ public class Personality {
             }
             return personality;     
         }
-        /**
-        * Answers if the person is extrovert or introvert.
-        * 
-        * @param percentOfB Test result.
-        * @return answer of either E or I.
-        */
-        public static String iOrE (int[] percentOfB, String result) {
-            String personality = result;
-            int index = indexOfAnswer(0, percentOfB);
-            if (percentOfB[index] > 50) {
-                personality = "I";
-            } else if (percentOfB[index] == 50) {
-                personality = "X";
-            }   else {
-                personality = "E";
-            }
-            return personality;     
-        }
-
-        /**
-        * Returns if user has more intuition(N), sensation(S), or is neither. 
-        * 
-        * @param percentOfB Test result.
-        * @return answer of either E or I.
-        */        
-        public static String nOrS (int[] percentOfB, String result) {
-            String personality = result;
-            int index = indexOfAnswer(1, percentOfB);
-            if (percentOfB[index] > 50) {
-                personality = "N";
-            } else if (percentOfB[index] == 50) {
-                personality = "X";
-            }   else {
-                personality = "S";
-            }
-            return personality;        
-        }
-        
-        /**
-        * Returns the correct index to answer the letters.
-        */
-        public static int indexOfAnswer(int index, int[] percentOfB) {
-            return index % percentOfB.length;
-        }
-        
-        /**
-        * Returns if user has more Thinking(T), Feeling(F), or is neither. 
-        * 
-        * @param percentOfB Test result.
-        * @return answer of either T or F.
-        */        
-        public static String tOrF (int[] percentOfB, String result) {
-            String personality = result;
-            int index = indexOfAnswer(2, percentOfB);
-            if (percentOfB[index] > 50) {
-                personality += "F";
-            } else if (percentOfB[index] == 50) {
-                personality += "X";
-            }   else {
-                personality += "T";
-            }
-            return personality;        
-        }
-        
-        /**
-        * Returns if user has more Perceiving(P), Judging(J), or is neither. 
-        * 
-        * @param percentOfB Test result.
-        * @return answer of either T or F.
-        */        
-        public static String pOrJ (int[] percentOfB) {
-            String personality = "";
-            if (percentOfB[NUMBER_OF_CHARACTERS - 2] > 50) {
-                personality += "P";
-            } else if (percentOfB[0] == 50) {
-                personality += "X";
-            }   else {
-                personality += "J";
-            }
-            return personality;        
-        }        
-        
-
 }
