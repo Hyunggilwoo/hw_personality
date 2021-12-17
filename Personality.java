@@ -112,8 +112,6 @@ public class Personality {
             personality += answerOfAOrB(1, "N", "S", percentOfB, personality);
             personality += answerOfAOrB(2, "F", "T", percentOfB, personality);
             personality += answerOfAOrB(3, "P", "J", percentOfB, personality);
-                        System.out.println(personality); 
-//             pOrJ(percentOfB);
             return name + ": " + Arrays.toString(percentOfB) +
             " = " + personality;
         }
